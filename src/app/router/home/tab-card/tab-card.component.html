@@ -1,0 +1,38 @@
+<div class="tab">
+<div class="ml2 between">
+  <a class="bottomBorder">
+    <button class="ztwBtn addBorder2 font3" (click)="navRouter()">
+      <a class="fa fa-bookmark-o"></a>
+      <a style="font-size: 1.2rem">{{title}}</a>
+    </button>
+    <span class="fontMini muted ml1">最新更新</span>
+  </a>
+  <a class="bottomBorder">
+  <button *ngIf="value!='home'" class="ztwBtn2 muted" (click)="navRouter()">
+    <i class="fa fa-angle-double-right"></i>
+  </button>
+  </a>
+</div>
+  <div class="between exhibition lt-md-hidden">
+    <md-card  style="padding:5px;" *ngFor="let i of data" (click)="selectItem(i)">
+      <md-card-header>
+        <md-card-title >
+          <span>
+          {{i.name |first |limitStr:30}}
+          </span>
+        </md-card-title>
+        <md-card-subtitle >
+          <div class="lt-md-hidden" style="font-size:12px;">
+            <span>{{i.year}}</span>
+            <span>{{i.date|date}}</span>
+          </div>
+        </md-card-subtitle>
+      </md-card-header>
+       <img  class="lt-md-hidden" [src]="i.img">
+      <div class="footer imgBadge lt-md-hidden">{{i.name |end}}</div>
+    </md-card>
+  </div>
+  <div class="gt-md-hidden">
+    <app-mini-card (click)="selectItem(i)" [data]="i" *ngFor="let i of data"></app-mini-card>
+  </div>
+</div>

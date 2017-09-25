@@ -1,0 +1,6 @@
+
+<div class="center ztwBtnGroup" style="margin-top:1rem;height:2rem;">
+  <button class="control" [disabled]="i.disabled" [myActive]="i.active" [btn]="i.value"
+          style="width:1.5rem;height:1.5rem" [class]="secondary?'ztwBtn2':'ztwBtn'" (click)="select(i)" *ngFor="let i of barArr"></button>
+    <div [@FadeToggle2]="loading?'show':'hidden'"   class="font3 fa fa-refresh fa-spin"></div>
+</div>

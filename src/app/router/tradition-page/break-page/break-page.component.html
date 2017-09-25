@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="gt-md-col-2 lt-md-hidden">
+    <div *ngIf="model&&model!='search'" style="max-width:220px;margin-top:3rem;" class="list0">
+      <div><a class="imgBadge"><i class="fa fa fa-cog fa-spin"></i></a></div>
+      <app-list-board (goto)="listGoto($event)" title="热度" class="listCard" [data]="_ms.listCache[model]?.h" ></app-list-board>
+      <app-list-board (goto)="listGoto($event)" title="推荐" class="listCard" [data]="_ms.listCache[model]?.r"></app-list-board>
+    </div>
+  </div>
+<div style="margin-top:10px;" class="gt-xl-col-8 gt-md-col-10">
+  <div class="ml2" *ngIf="model&&model!=='search'" style="position:relative;height:2.5rem;">
+    <a class="badge2" style="background:white"><i class="fa fa-th-list"></i>{{cgName}}</a>
+    <a class="badge">共<a >{{msn.count}}</a>部影片</a>
+    <app-toolkit style="position:absolute;right:0">
+      <a [routerLink]="['/'+this.model]" toolkit-item>滚动版</a>
+    </app-toolkit>
+  </div>
+<div >
+  <div class="center" style="height:600px" *ngIf="err&&!msn.showData">来错地方</div>
+  <div *ngIf="model=='search'&&msn.searchName">
+    <p>搜索：
+      <a class="badge2">{{msn.searchName}}</a>
+      ，找到
+      <a>{{msn.count}}</a>条相关影片 </p>
+  </div>
+  <div class="center">
+    <app-default-card [@MovieLoading3] [@Colour]="j==msn.selectJ?'show':'none'" (click)="selectMovie(i,j)" [data]="i" *ngFor="let i of msn.showData;let j=index">
+    </app-default-card>
+  </div>
+</div>
+<app-bar-arr (select)="selectPage($event)" [barArr]="msn.barArr" [maxPage]="msn.maxBar" [nowPage]="msn.nowPage" [secondary]="true"></app-bar-arr>
+</div>
+  <div class="gt-xl-col-2">
+
+  </div>
+</div>

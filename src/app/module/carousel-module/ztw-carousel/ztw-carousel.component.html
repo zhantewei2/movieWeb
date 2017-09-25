@@ -1,0 +1,13 @@
+<div (mouseover)="showBtn='show'" #main (mouseleave)="showBtn='hidden';leaveMain($event)" class="main">
+  <span [@SlideLeft]="showBtn" class="pre center pointer" (click)="pre()"><b>&lt;</b></span>
+  <span [@SlideRight]="showBtn" class="next center pointer" (click)="next()"><b>&gt;</b></span>
+  <nav class="center">
+    <div (click)="selectImg(i)" *ngFor="let i of navBar.arr">
+      <div class="navItem pointer"  [class.selectedImg]="index==i">&nbsp;</div>
+    </div>
+    <div class="showMsn" *ngIf="navBar.page!==0">
+      {{navBar.page}}
+    </div>
+  </nav>
+  <ng-content></ng-content>
+</div>

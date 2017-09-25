@@ -1,0 +1,10 @@
+pop-view{
+  color:black;
+}
+.searchContainer{
+  display:inline-flex;
+  height:50px;
+  align-items:center;
+  padding:5px;
+}
+

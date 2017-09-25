@@ -1,0 +1,11 @@
+md-input-container{
+  width:90%;
+  display:block;
+}
+:host{
+  width:100%;
+}
+.vfBtn{
+  border:1px solid gainsboro;border-radius:5px;
+  display:block;height:100%;
+}

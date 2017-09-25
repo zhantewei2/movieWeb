@@ -1,0 +1,29 @@
+label{
+  color:indianred;
+  font-weight: bold;
+}
+input{
+  width:200px;
+}
+.ng-pristine{
+  color:gray;
+}
+input.ng-dirty{
+  color:indianred;
+  background:gainsboro;
+}
+.btn{
+  position:fixed;
+  top:200px;
+  right:30%;
+}
+button{
+  background:white;
+  border:1px solid gainsboro;
+}
+.choose label{
+  color:mediumseagreen;
+}
+.choose label:before{
+  content:'可选__'
+}

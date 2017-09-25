@@ -1,0 +1,20 @@
+<div class="main row pointer">
+  <div class="img">
+    <app-bg-img></app-bg-img>
+     <img class="full" [src]="data.img">
+  </div>
+  <div style=" background:white;padding-left:5px;flex-grow:1">
+    <p class="fontColor">{{data.name |first |limitStr:30}}</p>
+    <p class="muted">{{data.name|end}}</p>
+    <p>
+      主演:&nbsp;{{data.actors|limitStr:35}}
+    </p>
+    <p>上映时间:&nbsp; {{data.year}}</p>
+    <div class="between">
+      <a >评分<a class="badge ml1">{{data.g}}</a></a>
+      <button class="ztwBtn color2Active">play
+        <i class="fa fa-play-circle"></i>
+      </button>
+    </div>
+  </div>
+</div>

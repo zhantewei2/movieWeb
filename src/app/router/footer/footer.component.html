@@ -1,0 +1,15 @@
+<div style="position:absolute;bottom:5px;right:1rem;">
+  <div class="center" controlOutClick (onOutClick)="outClick()" [once]="once">
+  <div style="height:50px;width:18rem;overflow:hidden" [@SlideWidthToggle]="show">
+    <div style="width:18rem;" class='fontMini fontColor'>
+      <a>本站资源均来自网络自动检索，如有侵权或广告请联系</a>
+      <button (click)="mail=!mail" (mouseover)="mail=true" class="ztwBtn fa fa-envelope-o"></button>
+      <a [@FadeToggle]="mail?'show':'hidden'" >zhantewei@gmail.com</a>
+    </div>
+
+  </div>
+  <button style="display:inline-block;align-self:flex-end" (click)="toggle()" class="ztwBtn inverse addBorder">
+    <i class="fa fa-volume-up"></i>
+  </button>
+  </div>
+</div>

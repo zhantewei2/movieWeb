@@ -1,0 +1,44 @@
+<div class="center flex-top" style="margin-top:1rem">
+  <div class="gt-xl-col-6 gt-md-col-8 lt-md-col-12">
+    <div>
+      <div style="margin-bottom: 5px">
+        <a><button (click)="back()" class="ztwBtn inverse">
+          <i class="fa fa-arrow-left"></i>
+          back</button> </a>
+        <a><i class="fa fa-play-circle-o mr2"></i></a>
+        <a> {{showData?.name | first}}</a>
+        <button (click)="edit()" *ngIf="_ts.msn.login" class="ztwBtn inverse">Edit</button>
+      </div>
+      <div style="overflow: hidden">
+          <router-outlet> </router-outlet>
+      </div>
+    </div>
+  </div>
+  <div class="gt-md-col-2 lt-md-hidden iconColorGroup">
+    <md-list>
+      <h3 md-subheader>影片详情</h3>
+      <md-list-item *ngFor="let i of listData">
+          <i [class]='i.classify ' style="display: flex;align-items: center;" md-list-avatar> </i>
+          <p  md-line>{{i.title}}</p>
+          <p md-line *ngIf="i.title=='片名'" style="overflow: hidden">
+            <span>{{i.name | first}}</span>
+            <span class="badge2">{{i.name | end}}</span>
+          </p>
+          <p md-line *ngIf="i.title!='片名'">{{i.name}}</p>
+      </md-list-item>
+      <md-list-item >
+        <i class="fa fa-file-text-o" md-list-avatar></i>
+        <p md-line>简介 </p>
+        <p md-line >{{showData?.itd}}</p>
+      </md-list-item>
+    </md-list>
+    <div (click)="msn.showItd=!msn.showItd" class="pointer center btn-block">
+      <i [class]="msn.showItd?'fa fa-caret-up':'fa fa-caret-down'"></i>
+    </div>
+    <div *ngIf="msn.showItd" style="font-size:12px;word-wrap: break-word;padding-left:12px;padding-right:12px;" [innerHTML]="'&nbsp;&nbsp;&nbsp;&nbsp;'+showData?.itd">
+    </div>
+    <md-divider></md-divider>
+    <app-recommand [start]="recommandStart" style="display: block"></app-recommand>
+  </div>
+  <ztwScroll [justScroll]="true" #myScroll></ztwScroll>
+</div>

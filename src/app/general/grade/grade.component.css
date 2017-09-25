@@ -1,0 +1,15 @@
+.group i{
+  font-size:1.5rem;
+  text-shadow: 1px 1px 1px gray;
+}
+.group i:hover{
+  cursor: pointer;
+  text-shadow: 1px 1px 1px black;
+}
+.group{
+  height:3rem;
+  width:10rem;
+}
+.submitSpace{
+  height:3rem;
+}

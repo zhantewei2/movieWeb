@@ -1,0 +1,31 @@
+<div class='row' style='position:relative;'>
+    <div class="gt-md-col-1 lt-md-col-1">
+    </div>
+  <div class="lt-md-col-1 gt-md-hidden">
+    &nbsp;&nbsp;
+  </div>
+  <div  style="position:fixed;height:100%;left:0px;z-index:2;top:20%" >
+    <app-nav-progress (selectedPage)="selectedPage($event)"></app-nav-progress>
+  </div>
+  <ztwScroll style="position:relative;" (topEvent)="topEvent($event)" [throttleTime]="100" #myScroll class="gt-md-col-9 lt-md-col-11" [ngModel]="scrollMsn.scrollValue" (ngModelChange)="change($event)">
+    <div style="position:absolute;right:0;top:10px;">
+      <app-toolkit>
+        <span (click)="tradition()" class="fontMini" toolkit-item>普通版</span>
+      </app-toolkit>
+    </div>
+    <app-forward-load id="top" (forwardClick)="selectedPage($event)" model="up" #forwardLoad>aa</app-forward-load>
+	<div style="min-height:900px;" class='flex-start'>
+    <span ztwScrollControl [value]="arr?.index" *ngFor="let arr of _ms.msn.showArr" class="flex-start">
+		  <app-movie-card1 [store]="this.backCard==i.id" (click)="goto(i,arr.index)" [@MovieAnimation]="i.animate" (@MovieAnimation.done)="animateDone.down()" [data]='i' *ngFor='let i of arr.data'></app-movie-card1>
+    </span>
+	</div>
+    <app-forward-load (forwardClick)="selectedPage($event)" model="down" #forwardLoad2></app-forward-load>
+  </ztwScroll>
+  <div class="gt-md-col-2 lt-md-hidden">
+    <div class="list0" [ngClass]="{list:!msn.overList,list2:msn.overList}">
+      <app-list-board (goto)="listGoto($event)" class="listCard" [data]="msn.listData?.h" title="热度"></app-list-board>
+      <app-list-board (goto)="listGoto($event)" class="listCard" [data]="msn.listData?.r" title="推荐"> </app-list-board>
+    </div>
+  </div>
+  </div>
+

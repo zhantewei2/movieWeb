@@ -1,0 +1,36 @@
+<p *ngIf="!hidden" class="fontMini">
+  <a class="ml1 muted">相关影片: <button title="更换" [disabled]="loading" (click)="reload()" class="ztwBtn addBorder fa fa-refresh"></button>
+  </a>
+  <i *ngIf="loading" class="fa fa-refresh fa-spin"></i>
+</p>
+
+  <md-list style="height:50rem">
+    <div *ngFor="let i of showData" class="parent" (mouseover)="i.recommandAn='show'" (mouseleave)="i.recommandAn='hidden'">
+    <md-list-item (click)="goto(i)" [@MovieLoading3] class="card" >
+      <div style="width:100px;" md-list-avatar>
+        <div class="img">
+          <app-bg-img></app-bg-img>
+        <img [src]="i.img" class="full">
+        </div>
+      </div>
+      <p md-line>
+        <a class="fontMini">{{i.name |first}}</a>
+      </p>
+      <p md-line>
+        {{i.date|date}}
+      </p>
+      <p md-line>
+        {{i.region}}
+      </p>
+
+    </md-list-item>
+    <md-divider></md-divider>
+      <div class="title fontMini" [@SlideHeightLight]="i.recommandAn">
+        <div><i class="fa fa-angle-down"></i></div>
+        <div>
+          <a>{{i.name |first |limitStr:20}}</a>
+          <a>评分:<a class="badge">{{i.g}}</a></a>
+        </div>
+      </div>
+    </div>
+  </md-list>

@@ -1,0 +1,43 @@
+<div style="width:100%;min-height: 400px;text-align: center;margin-top:4rem;">
+  <div>
+    <button style="background:indianred;color:white" class="ztwBtn" [routerLink]="['../']"><i class="fa fa-arrow-left mr1"></i>backAdmin</button>
+    <label class="fontColor">select</label>
+    <md-select placeholder="selectCategory" [(ngModel)]="selectCg" (ngModelChange)="cgChange($event)">
+      <md-option *ngFor="let i of _ts.msn.cgNav" [value]="i.index">{{i.name}}</md-option>
+      <md-option [value]="'home'">首页</md-option>
+    </md-select>
+  </div>
+  <div class="center">
+    <div *ngIf="showArr[0]" class="main" style="margin-top:10px;">
+      <div class="edit1" style="flex-grow: 2">
+        <md-input-container>
+          <label>
+            <i class="fa fa-search"></i>
+            <button (click)="searchBack()" class="ztwBtn" style="background:indianred;color:white" *ngIf="searching" >back </button>
+            <span *ngIf="searchWarning">
+              <i class="fa fa-warning fontColor"></i>
+              {{searchWarning}}
+            </span>
+          </label>
+          <input (ngModelChange)="searchChange($event)" (keyup.enter)="search()" [(ngModel)]="searchInput" mdInput>
+        </md-input-container>
+        <li [class.selected]="selectI._id==i._id" (click)="selectItem(i)" *ngFor="let i of showArr">{{i.name}}</li>
+        <app-bar-arr  [barArr]="barArr" [maxPage]="maxBar" [nowPage]="nowPage" (select)="selectPage($event)"></app-bar-arr>
+      </div>
+      <div *ngIf="showArr[0]" class="center" style="flex-flow:column">
+        <button (click)="appendId()" class="ztwBtn">append</button>
+        <button (click)='removeId()' class="ztwBtn">remove</button>
+        <br>
+        <button class="ztwBtn" (click)="moveUp()">Move Up</button>
+        <button class="ztwBtn" (click)="moveDown()">Move Down</button>
+      </div>
+      <div class="edit2" style="flex-grow:2;position:relative">
+        &nbsp;
+        <li [class.selected2]="selectI2._id==i._id" (click)="selectI2=i;selectIndex2=j" *ngFor="let i of saveArr;let j=index">{{i.name}}</li>
+        <button [disabled]="!saveArr[0]" (click)="submitList()" class="ztwBtn2" style="position:absolute;bottom:0;left:1rem">submit</button>
+        <button (click)="cleanData()" class="ztwBtn2" style="position:absolute;bottom:0;right:1rem">cleanAll</button>
+      </div>
+    </div>
+  </div>
+  <pop-view #popView></pop-view>
+</div>

@@ -1,0 +1,31 @@
+.main{
+}
+.btn-group{
+  position:relative;
+  width:2rem;
+}
+.col{
+  box-sizing: border-box;
+  float: left;
+  text-align: center;
+  width: 50%;
+}
+.col button{
+  display:block;
+  height:2rem;
+  border-width:0px;
+  width:100%;
+}
+.filter{
+  filter:blur(1px);
+}
+.selected{
+  background:indianred;
+  color:white;
+}
+.cover{
+  width:100%;
+  height:100%;
+  position:absolute;
+  z-index: 4;
+}

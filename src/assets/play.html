@@ -1,0 +1,50 @@
+<html>
+<head></head>
+<body style='margin:0px'>
+
+	<div>
+			<div id='xg_box' style='overflow: hidden;'> </div>
+				<script language="javascript">
+				var parse=function(path){
+					if(!path)return;
+					var obj={},key='',str='',v;
+					for(var i =1,len=path.length;i<len;i++){
+						v=path[i];
+						if(v=='='){
+							key=str;
+							str='';
+						}else if(v=='&'||i==len-1){
+							obj[key]=i==len-1?str+v:str;
+							str='';
+							key='';
+						}else{
+							str+=v;
+						}
+					}
+					return obj;
+				};
+				var obj=parse(location.search),
+					box=document.getElementById('xg_box');
+				var XgPlayer = {
+				'Url': decodeURIComponent(obj.d),
+				'NextcacheUrl': "",
+				'LastWebPage': '',
+				'NextWebPage': "http://www.xx.com/xxx.html",
+				'Buffer': './xigua/pase.html?buffer',
+				'Pase': './xigua/pase.html?pase',
+				'Width': obj.w,
+				'Height': obj.h,
+				'Second': 1,
+				"Installpage":'http://js.client51.com/installpage.html'
+				};
+    		</script>
+    		<script src="./xiguaplayer.js" charset="utf-8"></script>
+    		<script>
+
+    		</script>
+
+	</div>
+
+</body>
+<script></script>
+</html>

@@ -1,0 +1,15 @@
+
+<div (mouseleave)="leave()">
+  <div style="position:relative">
+    <span class="muted">评分:</span><div class="ml1" class="badge2 ml1">{{saveGrade }}</div>
+    <span style="position:absolute;right:0px" [@SlideRightToggle]="show" class="badge2">{{selectGrade}}</span>
+  </div>
+  <div  class="group iconColorGroup center">
+    <i (click)="click(i.index)" *ngFor="let i of gradeArr" [class]="i.classify"> </i>
+  </div>
+  <div class="submitSpace center ztwBtnGroup btnAdd">
+    <button  [@SlideRightToggle]="show" class="ztwBtn"  style="font-size:1rem" (click)="submit()">
+      打分
+    </button>
+  </div>
+</div>

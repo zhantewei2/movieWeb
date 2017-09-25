@@ -1,0 +1,5 @@
+<div [@SlideRightToggle]="slide" class="main">
+  <ng-content></ng-content>
+</div>
+<div class="bg" [@FadeToggle]="slide" (click)="slide='hidden'">
+</div>

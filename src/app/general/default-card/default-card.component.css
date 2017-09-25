@@ -1,0 +1,20 @@
+.main{
+  width:20rem;
+  font-size:13px;
+  border:1px solid gainsboro;
+  border-radius:5px;
+  padding:5px;
+  margin:5px;
+}
+.img{
+  width:9rem;
+  height:12rem;
+  position:relative;
+}
+img{border-radius:5px}
+
+.ztwBtn{
+  color:white;
+  box-shadow: 0 0 4px gray;
+}
+

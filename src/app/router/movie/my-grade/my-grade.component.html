@@ -1,0 +1,5 @@
+<app-grade [inG]="one.db.g" (outG)="putGrade($event)"></app-grade>
+<div *ngIf="loading" class="loading center">
+  <i style="color:rgba(0,0,0,0.3)" class="fa fa-spinner fa-pulse fa-2x"></i>
+</div>
+<pop-view #popView></pop-view>

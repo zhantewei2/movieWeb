@@ -1,0 +1,16 @@
+.list2{
+  position:fixed;
+  top:40px;
+  right:0;
+}
+.list0{
+  padding:1rem;
+  width:220px;
+}
+.list{
+  margin-top:50px;
+  float:right;
+}
+@media screen and (max-width:900px){
+  .flex-start{justify-content: center}
+}

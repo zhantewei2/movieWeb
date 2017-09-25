@@ -1,0 +1,6 @@
+<div style="width:20rem;" class="row">
+  <button (click)="toggle()" class="ztwBtn addBorder"><i class="fa fa-share-alt"></i></button>
+  <div [@FadeToggle2]="show?'show':'hidden'">
+    <iframe class="ml3" (mouseover)="height='25rem'" (mouseleave)="height='4rem'" [style.height]="height" #iframe></iframe>
+  </div>
+</div>

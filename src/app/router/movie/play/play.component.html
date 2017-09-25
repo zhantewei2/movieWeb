@@ -1,0 +1,33 @@
+<div  class="main" [style.overflow]="overflow">
+  <span  [@PlayMovie]="playing?'hidden':'show'" style="height:100%;width:100%;">
+    <img [@MovieLoading3] [src]="one.db.img" class="gt-md-col-4 lt-md-col-8 lt-md-hidden" >
+    <div class="msn gt-md-col-8 center" style="flex-direction: column;">
+      <app-my-grade></app-my-grade>
+      <div class="btn-block">更新时间:</div>
+      <div >{{one.db.date | date}}</div>
+      <div class="muted ">演员:</div>
+      <div style="margin-bottom:2rem;">{{one.db.actors | limitStr:160}} </div>
+      <app-baidu-share (mouseover)="overflow='visible'" (mouseleave)="overflow='hidden'"></app-baidu-share>
+    </div>
+  </span>
+  <iframe id="playIframe"  [@PlayMovie]="playing?'show':'hidden'">
+
+  </iframe>
+</div>
+<div class="playlist">
+  <div style="position:relative">
+    <div style="height:1.5rem;width:100%;" class="around">
+      <button [@SlideRightToggle]="playing?'show':'hidden'"  (click)="back()">
+        <i style="width:30px;" class="fa fa-arrow-left mr1 ml1"></i>
+      </button>
+      <button [@SlideLeftToggle]="playing?'show':'hidden'" (click)="one.openLight(true)">
+        <span *ngIf="!one.darkTheme">关灯</span>
+        <span *ngIf="one.darkTheme">开灯</span>
+        <i class="fa fa-lightbulb-o"></i>
+      </button>
+      <div [@FadeToggle]="playing?'hidden':'show'" class="address">播放地址</div>
+    </div>
+  </div>
+<app-play-list #playList [data]="one.db.playData" (selectItem)="selectMovie($event)"></app-play-list>
+</div>
+<app-notes style="float:left;width:100%;display:block"> aa</app-notes>

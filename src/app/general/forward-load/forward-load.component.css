@@ -1,0 +1,36 @@
+.main{
+  position:relative;height:3rem;
+}
+.state1{
+  height:1rem;
+
+}
+.arrow{
+  color:white;
+  padding-left:5px;
+  padding-right:5px;
+  background:gainsboro;
+  box-shadow: 0 3px 5px gray;
+  border-radius:2rem;
+}
+.arrow:hover{
+  transform:scale(1.2,1.2);
+  cursor: pointer;
+}
+.arrow:active{
+  transform: scale(1,1);
+}
+.ld1{
+  top:50px;
+}
+.ld2{
+  bottom:80px;
+}
+.loading{
+  position:absolute;
+  box-shadow: 0px 5px 10px gray;
+  z-index: 5;
+  background:rgba(0,0,0,0.1);
+  color:white;
+  border-radius: 50%;
+}

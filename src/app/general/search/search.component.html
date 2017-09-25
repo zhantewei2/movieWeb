@@ -1,0 +1,10 @@
+<span class='searchContainer' (document:click)="outClick()" (click)="$event.stopPropagation()">
+  <button md-button (click)='openSearch=!openSearch'>
+    <i *ngIf="!searching" class="fa fa-search"></i>
+    <i *ngIf="searching" class="fa fa-spinner fa-spin"></i>
+  </button>
+  <md-input-container [@SlideWidthToggle]='openSearch?"show":"hidden"'>
+    <input #spy [formControl]="inputCtrl" maxlength="9" (keyup.enter)="search()"   mdInput placeholder="search" >
+  </md-input-container>
+  <pop-view #popView></pop-view>
+</span>

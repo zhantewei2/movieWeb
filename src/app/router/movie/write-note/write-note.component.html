@@ -1,0 +1,41 @@
+<div style="margin-top:10px;">
+  <form [formGroup]="group">
+  <div class="row" style="height:2rem;align-items: flex-start">
+    <div >
+      <i (click)='editNameFn()' class="fontColor fa" [ngClass]="{'fa-user-circle-o':!replyId,'fa-mail-reply-all':replyId}"></i>
+    </div>
+      <input (focus)="setName($event)" (blur)="storageName($event.target.value)"  class="ml2" maxlength="10" [@SlideWidthToggle]="editName" placeholder="输入你的名字" style="display:inline-block;border:1px solid gainsboro;border-radius:3px;">
+  </div>
+  <md-input-container>
+    <textarea (click)="submitBtn=true" mdInput placeholder="评论" [formControlName]="'content'" ></textarea>
+  </md-input-container>
+  <table *ngIf="submitBtn" cellspacing="0"><tr style="height:4rem">
+    <td style="width:120px;text-align: center" *ngIf="openVf">
+      <span *ngIf="vfStr" class="vfBtn pointer" (click)="getVf()">
+        <verify-canvas #canvas [data]="vfStr"></verify-canvas>
+      </span>
+      <span>
+        <i class="fa fa-spinner fa-spin" *ngIf="!vfStr"> </i>
+      </span>
+    </td>
+    <td>
+      <md-input-container [@SlideWidthToggle]="openVf?'show':'hidden'">
+        <input mdInput placeholder="输入验证码" [formControlName]="'verify'">
+      </md-input-container>
+    </td>
+    <td>
+         <button md-button (click)="submit()" [disabled]="!group.valid||other||uploading||timeout">提交 </button>
+    </td>
+    <td>
+      <button md-button (click)="clean()">取消 </button>
+    </td>
+    <td>
+      <i *ngIf="uploading" class="fa fa-spinner fa-spin"> </i>
+    </td>
+    </tr>
+    </table>
+    </form>
+</div>
+<pop-view #popView [model]="'warning'">
+
+</pop-view>

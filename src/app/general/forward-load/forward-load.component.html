@@ -1,0 +1,22 @@
+<div *ngIf="_ms.msn.showArr[0]">
+&nbsp;
+<div *ngIf="model=='up'" class="main center">
+
+      <span (click)="send(_ms.msn.nowPage-1)" *ngIf="!state&&_ms.msn.nowPage!==1" class="arrow">
+       <i  class='fa fa-angle-double-up'> </i>
+      </span>
+  <div [@MovieLoading] *ngIf="state&&_ms.loading" class="loading ld1">
+    <i class="fa fa-spinner fa-pulse fa-2x"></i>
+  </div>
+</div>
+<div *ngIf="model=='down'"  class="main center">
+
+     <span (click)="send(_ms.msn.nowPage+1)" *ngIf="!state&&_ms.msn.nowPage!=_ms.msn.maxPage" class="arrow">
+       <i  class='fa fa-angle-double-down' > </i>
+     </span>
+
+  <div [@MovieLoading2] *ngIf="state&&_ms.loading" class="loading ld2">
+    <i class="fa fa-spinner fa-pulse fa-2x"></i>
+  </div>
+</div>
+</div>

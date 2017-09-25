@@ -1,0 +1,259 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$candy-app-primary: mat-palette($mat-red,A200);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$candy-app-warn:    mat-palette($mat-blue,300);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($candy-app-theme);
+$md:1000px;
+$xl:1900px;
+$mColor:#990000;
+.between{
+  display:flex;
+  justify-content:space-between;
+}
+.around{
+  display:flex;
+  justify-content: space-around;
+}
+
+$n1:(gt,min,$md,md),(gt,min,$xl,xl),(lt,max,$md,md);
+@each $size,$x,$y,$pos in $n1{
+	@media screen and (#{$x}-width:$y){
+		.#{$size}-#{$pos}-hidden{display:none};
+		@for $i from 1 to 13{
+			.#{$size}-#{$pos}-col-#{$i}{
+				float:left;
+				box-sizing:border-box;
+				width:100%*($i/12);
+			}
+		}
+	}
+}
+@media screen and (max-width:1000px){
+  .col-12{
+    box-sizing:border-box;
+    float:left;
+
+  }
+}
+.fontColor{
+	color:$mColor;
+}
+$aColor:rgba($mColor,.4);
+$color2:mix($mColor,white,60%);
+$secondColor:darken(mix($mColor,blue,80%),10%);
+$threeColor:mix(adjust-hue($color2,180deg),$mColor,80%);
+.bgNav{
+  background:saturate($mColor,60%);
+}
+
+.flex-start{
+  display:flex;
+  flex-flow:row wrap;
+  justify-content: flex-start;
+}
+
+@for $i from 1 to 4{
+	.ml#{$i} {margin-left:$i*1rem};
+	.mr#{$i} {margin-right:$i*1rem}
+}
+.full{
+  width:100%;
+  height:100%;
+}
+
+body{
+  background:ghostwhite;
+  transition:background 1s;
+}
+.badge{
+  border-radius:1rem;
+  height:1rem;
+  padding:3px;
+  text-align:center;
+  min-width:1rem;
+  display:inline-block;
+  border:1px solid gainsboro;
+  color:$color2;
+  font-size:12px;
+}
+.badge2{
+  display:inline-block;
+  padding:5px;
+  color:$color2;
+  background: gainsboro;
+  border-radius:2px;
+}
+.row{
+	width:100%;
+  position:relative;
+  display:flex;
+}
+.center{
+	display:flex;
+  flex-flow:wrap;
+	justify-content: center;
+	align-items: center;
+}
+.flex-top{
+  align-items:flex-start;
+}
+.pointer:hover{
+	cursor:pointer;
+	background:rgba($mColor,.1);
+}
+.iconColorGroup{
+  i{color:$color2}
+}
+
+.bgTransparent{
+  background:$aColor;
+}
+.imgBadge{
+  background:$aColor;
+  color:white;
+  box-shadow: 0 0 9px white;
+  border-radius:5px;
+  padding:10px;
+}
+.muted{
+	color:gray;
+}
+.remark{
+  font-size:12px;
+  color:gray;
+}
+html{
+  font-size:16px;
+}
+html, body, .my-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+.flex-column{
+  flex-flow:column wrap;
+}
+button{
+  cursor: pointer;
+  border:none;
+  background:transparent;
+  transition:box-shadow 0.3s,transform 0.2s,background 0.3s,color 0.3s;
+  display:inline-block;
+  outline:none;
+}
+.ztwBtnGroup{
+  .ztwBtn2{
+    margin-left:5px;
+  }
+}
+.ztwBtn{
+  border-radius:5px;
+  padding:5px;
+  color:$color2;
+  background:transparent;
+  &[disabled]{
+    cursor:wait;
+    color:gainsboro;
+  }
+  &[disabled]:hover{
+    cursor:help;
+    border-color:gainsboro;
+    background:gainsboro;
+    box-shadow:0 0 0;
+  }
+  &[active]{
+    color:white;
+    background: $secondColor;
+    box-shadow: 0 0 5px $secondColor;
+  }
+  &:hover{
+    color:white;
+    background:$color2;
+    box-shadow: 0 0 4px $color2;
+  }
+}
+.inverse{
+  color:white;
+  background:$color2;
+  transition:background 0.5s,color 0.5s;
+  &:hover{
+    color:$color2;
+    background:white;
+  }
+}
+.fontMini{
+  font-size:13px;
+}
+a:link{
+  text-decoration:none;
+}
+.ztwBtn2{
+  border-radius:50%;
+  border:1px solid gainsboro;
+  &[active]{
+    color:white;
+    background:gainsboro;
+  }
+  &:hover{
+    transform:scale(1.5,1.5);
+  }
+  &[disabled]{
+    color:gainsboro;
+    box-shadow: 0 0 0 white;
+  }
+}
+.listCard{
+  background:white;
+  display:block;
+  border:1px solid gainsboro;
+  box-shadow:-1px 0 4px gainsboro;
+  &:first-of-type{
+    border-bottom: transparent;
+    border-radius:8px 8px 0 0;
+  }
+  &:last-of-type{
+    border-top:transparent;
+    border-radius:0 0 8px 8px;
+  }
+}
+.btn-block{
+  color:gray;
+  border-top:1px solid gainsboro;
+}
+
+.bg3{
+  background:$threeColor;
+}
+.font3{
+  color:$threeColor;
+}
+.color2Active{
+  background:$color2;
+  color:white;
+}
+.addBorder{
+  border:1px solid $color2;
+}
+.addBorder2{
+  border:1px solid gainsboro;
+}
+
+

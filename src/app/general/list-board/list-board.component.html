@@ -1,0 +1,22 @@
+
+<md-list dense>
+	<h3 md-subheader>
+    <button (click)="showList=!showList" class="ztwBtn">
+      <i class="fa fa-arrow-right fontColor"></i>
+      {{title}}
+    </button>
+  </h3>
+  <div [@SlideHeightToggle]="showList?'show':'hidden'" style="overflow: hidden;width:100%">
+    <md-list-item (click)="gotoFn(child)" *ngFor='let child of data;let j=index'>
+      <button md-button md-line class="full">
+      <div class="between">
+        <span style="padding:0 5px;"><i class="fa fa-film" style="color:gainsboro"></i></span>
+        <span>{{child.name | first |limitStr:30}}</span>
+        <span class="muted">{{child.date|date:'MM-dd'}}</span>
+      </div>
+      </button>
+	  </md-list-item>
+  </div>
+	<md-divider></md-divider>
+</md-list>
+

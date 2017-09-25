@@ -1,0 +1,28 @@
+
+<div class='row'>
+	<div class='gt-md-col-2 lt-md-hidden'>
+      <ztw-carousel [interval]="3000" style="width:100%;height:350px;display:block;overflow: hidden">
+        <ztw-carousel-item *ngFor="let i of listData?.r">
+          <img [src]="i.img" ztw-carousel-img>
+          <div ztw-carousel-header >
+            <div style="height:2rem;">
+              <span  class="badge imgBadge pointer" (click)="goto(i)">{{i.name | first}}</span>
+            </div>
+            <br>
+          </div>
+        </ztw-carousel-item>
+      </ztw-carousel>
+    <div #listBoard [class.fixBoard]="boardScrollOver" [style.width]="boardWidth">
+      <app-list-board  (goto)="goto($event)" class="listCard" [data]="listData?.h" title="全站热点"></app-list-board>
+    </div>
+	</div>
+	<div class='gt-md-col-10 gt-xl-col-9' style="width:100%">
+    <app-notice></app-notice>
+    <div class="center" >
+    <div class="lt-md-col-11">
+       <app-tab-card (select)="select($event)" *ngFor="let i of _ts.homeCardTabs" [data]="_ts.homeCard[i]" [title]="i"></app-tab-card>
+    </div>
+    </div>
+	</div>
+</div>
+<ztwScroll #myScroll (topEvent)="getTop($event)"></ztwScroll>

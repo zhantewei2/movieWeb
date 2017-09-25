@@ -1,0 +1,21 @@
+<script src="../../module/carousel-module/carousel-module.module.ts"></script>
+<div class="main">
+  <div class="col btn-group" [class.filter]="_ms.loading">
+    <div class="cover" *ngIf="_ms.loading"> </div>
+      <button (click)="selectPage(_ms.msn.minPage)" class="muted pointer"> <i class=" fa fa-angle-double-up"> </i></button>
+      <button class="pointer" (click)="selectPage(_ms.msn.nowPage-1)"><i class="muted fa fa-angle-up"></i></button>
+      <button (click)="selectPage(i)" class='pointer center' [class.color2Active]="i==_ms.msn.nowPage" *ngFor="let i of _ms.msn.barArr">{{i}}</button>
+      <button (click)="selectPage(_ms.msn.nowPage+1)" class="pointer"><i class="muted fa fa-angle-down"></i> </button>
+      <button (click)='selectPage(_ms.msn.maxPage)' class="muted pointer"><i class="fa fa-angle-double-down"> </i></button>
+      <span class="badge">P{{_ms.msn.maxPage}}</span>
+
+    <div style="padding:0px;width:100%;overflow: hidden">
+      <i *ngIf="debounce" class="fontColor fa fa-spinner fa-spin"></i>
+    </div>
+  </div>
+  <div class="col">
+    <md-slider min="1" (change)="getValue($event)" [disabled]="_ms.loading" [thumb-label]="true" [max]="_ms.msn.maxPage" [value]="_ms.msn.nowPage" color="accent" [invert]="true" vertical="true" style="height:300px;" ></md-slider>
+
+  </div>
+
+</div>

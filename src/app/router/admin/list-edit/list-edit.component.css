@@ -1,0 +1,32 @@
+li{
+  list-style: none;
+  display:block;
+}
+li:hover{
+  text-shadow:0 1px 1px white;
+  cursor:pointer;
+}
+button{
+  border:1px solid gainsboro;
+}
+.selected{
+  background:indianred;
+  color:white;
+}
+.selected2{
+  background:darkslategrey;
+  color:white;
+}
+.main>div{
+  flex:1;
+  border:1px solid gainsboro;
+  border-radius:1rem;
+}
+.edit1,.edit2{
+  background:gainsboro;
+}
+.main{
+  display:flex;
+  height:400px;
+  width:800px;
+}

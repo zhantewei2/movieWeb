@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+import { TotalService} from './service/total.service';
+import {SimpleHttp} from './service/simpleHttp.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  hammerN:number=1;
+  constructor(
+  	public _ts:TotalService,
+    public simpleHttp:SimpleHttp
+  	){}
+  ngOnInit(){
+
+
+  }
 }

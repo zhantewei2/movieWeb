@@ -1,0 +1,7 @@
+iframe{
+  position:absolute;
+  z-index: 2;
+  border-radius:5px;
+  overflow:hidden;
+  border:none;
+}

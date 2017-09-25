@@ -1,0 +1,7 @@
+.main{
+  position:absolute;
+  z-index:-1;
+  top:0;
+  background:lightgray;
+  border-radius:5px;
+}

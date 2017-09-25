@@ -1,0 +1,32 @@
+img{
+  width:100%;
+  max-width:13rem;
+  border-radius: 3px;
+}
+.bottomBorder{
+  border-bottom:1px solid gainsboro;
+  padding:5px;
+}
+.exhibition{
+  padding:1rem 0 1rem 0;
+  border-bottom:1px solid gainsboro;
+  flex-wrap:nowrap;
+}
+md-card{
+  flex-grow:1;
+}
+.footer{
+  position:absolute;
+  bottom:0px;
+  height:1.5rem;
+  color:white;
+  font-size:12px;
+}
+.tab{
+  margin: 0.5rem 0 2rem 0;
+  width:100%;
+}
+md-card:hover{
+  cursor: pointer;
+  filter:saturate(3);
+}

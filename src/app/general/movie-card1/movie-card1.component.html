@@ -1,0 +1,14 @@
+<md-card [@Colour]="store?'show':'hide'" class="pointer">
+  <div class="grade fontMini"><span class="badge" title="评分">{{data.g}}</span></div>
+<md-card-header>
+  <md-card-title>{{data.name | limitStr :36 }}</md-card-title>
+  <md-card-subtitle style="font-size:12px">
+    <span>上映:{{data.year}}</span>
+    <span class='ml1'>地区:{{data.region}}</span>
+  </md-card-subtitle>
+</md-card-header>
+<img md-card-image [src]='data.img'>
+<md-card-content>
+  <p class='muted fontMini'>{{data.actors}}</p>
+</md-card-content>
+</md-card>

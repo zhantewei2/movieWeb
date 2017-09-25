@@ -1,0 +1,14 @@
+
+<div (click)="listState='show'" class="center  pointer btn-block" *ngIf="listState=='show'?false:true">
+  <i class="fontColor  fa fa-caret-down"></i>
+</div>
+<div style="overflow: hidden;" [@SlideHeightToggle]="listState">
+  <div *ngFor="let i of titleArr" class='btn-block'>
+    <h4 md-subheader ><select-title [data]="i"></select-title></h4>
+    <div class="flex-start">
+      <button [myActive]="i==item" myActive style="margin:5px" (click)="select(x,i)" class="ztwBtn addBorder2" *ngFor="let x of data[i];let i=index">
+        {{x |selectName}}
+      </button>
+    </div>
+  </div>
+</div>

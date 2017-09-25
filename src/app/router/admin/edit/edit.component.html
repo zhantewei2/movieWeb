@@ -1,0 +1,80 @@
+<div *ngIf="end" class="main center" style="font-size:12px;">
+  <form [formGroup]="group" style="width:50%;display:block;margin-top:3rem;">
+    <div [class.choose]="i.choose" *ngFor="let i of showData">
+      <span [ngSwitch]="i.type">
+          <div class="text" *ngSwitchCase="'text'">
+            <md-input-container>
+              <label>{{i.name}}:</label>
+              <input mdInput [formControlName]="i.name" >
+            </md-input-container>
+          </div>
+          <div *ngSwitchCase="'cg'">
+            <label>
+              {{i.name}}:
+            </label>
+            <md-select [formControlName]="i.name">
+              <md-option *ngFor="let j of i.selection" [value]="j.index">{{j.index}}</md-option>
+            </md-select>
+          </div>
+          <div *ngSwitchCase="'img'" style="border:1px solid gainsboro;">
+            <label style="vertical-align: top">{{i.name}}:</label>
+            <img [src]="group.value.img">
+            <br>
+            <label>Change:</label>
+            <md-input-container>
+              <input style="width:600px;" [formControlName]="i.name" mdInput>
+            </md-input-container>
+          </div>
+          <div *ngSwitchCase="'list'" style="border:1px solid gainsboro">
+            <label>{{i.name}}</label>
+            <div *ngFor="let j of playArr">
+              <p style="color:darkslategrey">{{j}}
+                <button (click)="delTitle(j)" class="ztwBtn"><i class="fontColor fa fa-trash"></i></button>
+
+              </p>
+              <div class="ml2">
+                <div *ngFor="let x of playData[j];let z=index;">
+                  <span>{{x |selectName}}</span>
+                  <input (change)="playItemChange(j,z,x)" [value]="x">
+                  <button (click)="delAddr(j,z)" class="ztwBtn"><i class="fontColor fa fa-trash"> </i></button>
+                  <br>
+                </div>
+                <button (click)="addAddr(j)" class="ztwBtn ">Append<i class="ml1 fa fa-plus-circle fontColor"></i></button>
+              </div>
+            </div>
+            <div style="margin-top:5px;">
+              <button (click)="addTitle()" class="ztwBtn">addTitle <i class="ml1 fa fa-plus-circle fontColor"> </i></button>
+            </div>
+          </div>
+          <div *ngSwitchCase="'textarea'">
+            <md-input-container>
+              <label style="vertical-align: top">itd:</label>
+              <textarea style="width:600px;height:3rem;" mdInput [formControlName]="i.name"></textarea>
+            </md-input-container>
+          </div>
+        </span>
+    </div>
+  </form>
+  <div class="btn ztwBtnGroup">
+    <button *ngIf="this.update"  (click)="submitModify()" class="ztwBtn" [disabled]="!group.valid">modify</button>
+    <button *ngIf="!this.update" (click)='submitAppend()' [disabled]="!group.valid" class="ztwBtn">append</button>
+    <button *ngIf="this.update" (click)='submitDelete()' class="ztwBtn">delete</button>
+    <button *ngIf="this.update" (click)="resetData()" class="ztwBtn" >reset</button>
+    <div><button class="ztwBtn" (click)="backAdmin()">backAdmin</button></div>
+  </div>
+  <pop-view #popView>
+    <div> </div>
+    <br>
+    <div *ngIf="popViewModel=='prompt'">
+      <label>输入
+      </label>
+      <md-input-container>
+        <input [(ngModel)]="popViewInput" name="popView" mdInput>
+      </md-input-container>
+    </div>
+    <div class="around">
+      <button (click)="popConfirm()" class="ztwBtn">confirm</button>
+      <button (click)="popCancel()" class="ztwBtn">cancel</button>
+    </div>
+  </pop-view>
+</div>

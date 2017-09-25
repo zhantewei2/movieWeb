@@ -1,0 +1,11 @@
+<div style="position:relative;display:inline-block;" >
+  <button  [once]="once" (onOutClick)="outClick()" (click)="toggle()" class="ztwBtn inverse" controlOutClick><i class="fa fa-th-large"></i></button>
+  <div #spy class=" content" [@SlideWidthToggle]="content">
+    <div class="imgBadge between" style="width:10rem;">
+      <i class="fa fa-envira"></i>
+      <div class="center">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

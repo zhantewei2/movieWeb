@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <style>
+            body{
+                background:gainsboro;
+                transition:background-color 1s;
+            }
+        </style>
+    </head>
+    <body >
+    <button onclick="transform()"> click</button>
+    </body>
+    <script>
+        var body=document.querySelector('body');
+        document.addEventListener('visibilitychange',function(e){
+            if(!document.hidden){
+                body.style.background='red';
+                setTimeout(function(){
+                    body.style.background='gainsboro';
+                },600)
+            }
+        });
+        let toggle=false;
+        function transform(){
+            body.style.background=toggle?'gainsboro':'red';
+            toggle=!toggle;
+        }
+    </script>
+</html>

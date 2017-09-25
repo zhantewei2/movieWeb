@@ -1,0 +1,34 @@
+<html>
+<link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+    td>div{
+       visibility:hidden;
+    }
+</style>
+<body>
+    <table style="width:100%;height:100%;text-align: center;background:gainsboro">
+        <tr>
+            <td>
+                <div id="buffer">
+                    <i class="fa fa-circle-o-notch fa-spin"></i>Loading
+                </div>
+                <div id="pase">
+                    pase
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+    <script>
+        var id=function(name){
+            return document.getElementById(name);
+        };
+        var model=location.search.slice(1);
+        if(model=='pase'){
+          id(model).style.visibility='visible';
+        }else if(model=='buffer'){
+            id(model).style.visibility='visible';
+        }
+
+    </script>
+</html>

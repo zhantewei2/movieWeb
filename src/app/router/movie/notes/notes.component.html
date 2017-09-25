@@ -1,0 +1,57 @@
+
+<app-write-note (leNote)="leNote()" style="padding:1rem;display:block"></app-write-note>
+<md-card style="background:transparent;border:1px solid rgba(177,177,177,0.2);border-radius:5px;">
+  <md-card-header>
+    <i class="fa fa-comments-o mr1"> </i>评论
+  </md-card-header>
+  <div *ngIf="one.db.nc==0" >
+    <span class="badge" style="color:black">
+    您将成为第一个评论的人。。
+    <i class="fa fa-sign-language"></i>
+    </span>
+  </div>
+
+  <div [@FadeOut] *ngFor="let i of one.db.notes;let j=index" style="box-shadow: 0 0 3px gainsboro;padding:10px 10px 15px 10px;border-radius:5px;margin-bottom: 1rem;">
+      <div class="row">
+        <div class="center" style="width:3rem">
+          <i class="fa fa-coffee muted"></i>
+        </div>
+        <div style="padding-left:1rem;word-break:break-all;width:100%">
+          <div style="padding:10px 0 10px 0;">{{i.c}}</div>
+          <div class="name muted">{{i.d | date}}</div>
+          <div  class="between muted" style="font-size:12px;">
+            <a (click)="loadComponent(j,i._id)" class="fontColor pointer">回复 </a>
+            <span> {{i.n}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="ml4">
+        <div class="pointer" style="border-radius:5px;font-size:14px;color:gray" *ngIf="i.rl>2">
+          <div (click)="moreReply(i)" *ngIf="!i.replyOpen">查看更多{{i.rl-2}}条回复<i class="fa fa-caret-down ml1 fontColor"></i></div>
+          <div (click)='hideReply(i)' *ngIf="i.replyOpen">隐蔽回复<i class="fa fa-caret-up fontColor"> </i> </div>
+        </div>
+        <app-reply-card *ngFor="let x of i.r" [data]="x"></app-reply-card>
+        <div [style.display]="i.replyOpen?'block':'none'">
+          <!--reply card -->
+          <div *ngIf="loadingReply" class="center"><i class="fa fa-spinner fa-pulse fa-2x muted"></i></div>
+          <div>
+            <app-reply-card *ngFor="let z of showArr2" [data]="z"> </app-reply-card>
+          </div>
+          <div *ngIf="i.rl>=msn.replySize" style="display: flex;justify-content: flex-end">
+            <app-bar-arr [barArr]="barArr2" [maxPage]="maxPage2" [(ngModel)]="nowPage2" (ngModelChange)="selectPage2($event,i)"></app-bar-arr>
+          </div>
+          <!--reply card -->
+        </div>
+
+      </div>
+      <div class="bgTransparent" style="border-radius:5px;padding-left:3rem;" class="center">
+        <ng-template appLoadComponent></ng-template>
+      </div>
+  </div>
+
+  <app-bar-arr [secondary]="true" [barArr]="barArr" [nowPage]="one.noteNowPage" [maxPage]="maxPage" (select)="selectPage($event)"></app-bar-arr>
+
+</md-card>
+&nbsp;
+
+

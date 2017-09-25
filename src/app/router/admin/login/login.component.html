@@ -1,0 +1,40 @@
+<div class="center" style="height:400px;width:100%">
+  <div >
+    <div *ngIf="!_ts.msn.login">
+        <span></span>
+        <md-input-container>
+          <label>Login</label>
+          <input mdInput #spy>
+        </md-input-container>
+        <br>
+        <button (click)="submit(spy.value)" md-button>submit</button>
+
+    </div>
+    <div *ngIf="_ts.msn.login">
+      <div style="border-radius:5px;margin:10px;padding:2rem;background:gainsboro">
+        <p>Logined!</p>
+        <div>
+          <button class="ztwBtn" (click)="logout()">logout</button>
+        </div>
+        <div style="height:1rem">
+          <i *ngIf="updatingHot" class="fontColor fa fa-spinner fa-pulse"> </i>
+        </div>
+      </div>
+      <div style="display:flex;flex-flow:column">
+         <button (click)="goto('insert')" md-button>InsertMovie</button>
+        <button [routerLink]="['../editList']" md-button>
+          <i class="fa fa-list-ol"></i> edit-List-recommend</button>
+        <button (click)="updateHotList()" md-button>
+          <i class="fa fa-list-ol"></i>
+          update-every-hot-list
+          <i class="fontColor fa fa-fire"></i>
+        </button>
+        <button (click)="setHomeCard()" md-button>
+          <i class="fa fa fa-home"></i>
+          set-all-home-card
+        </button>
+      </div>
+    </div>
+  </div>
+  <pop-view #popView></pop-view>
+</div>

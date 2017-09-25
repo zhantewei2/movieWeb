@@ -1,0 +1,40 @@
+iframe{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  position:absolute;
+  border-width:0;
+}
+:host{
+  width:100%;
+  height:100%;
+}
+.msn>div{
+  width:20rem;
+  text-align: left;
+  padding:5px 0px 5px 0px;
+}
+.main{
+  height:500px;
+  position:relative;
+}
+
+img{
+  border-radius:5px;
+  max-height: 450px;
+}
+.playlist{
+  width:100%;
+  display: block;
+  float:left;
+  margin:1rem 0 2rem 0;
+}
+.address{
+  position:absolute;
+  left:0px;
+}
+.around>button{
+  font-size:1rem;
+  color:gray;
+  border-bottom:1px solid gray;
+}
